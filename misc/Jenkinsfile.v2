@@ -22,9 +22,10 @@ node {
           sh 'npm test'                     
      }                                   
      mysql.stop()
-   }                                     
+   }  
+   
    stage('docker build/push') {            
-     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
+     docker.withRegistry('https://index.docker.io/v1/', 'arundhwaj123') {
        def app = docker.build("arundhwaj/docker-nodejs-test:prod-v1", '.').push()
      }                                     
    }                                       

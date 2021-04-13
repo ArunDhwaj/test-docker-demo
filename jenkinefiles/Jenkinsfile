@@ -1,4 +1,8 @@
 node {
+    environment{
+       dockerHome = tool 'myDocker'
+       PATH = "$dockerHome/bin:$PATH"
+    }
    def commit_id
    stage('Preparation') {
      checkout scm

@@ -13,7 +13,7 @@ node {
    }
    stage('docker build/push') {
      docker.withRegistry('https://hub.docker.com/', 'arundhwaj123') {
-       def app = docker.build("arundhwaj/docker-nodejs-test:prod-v3", '.').push()
+       def app = docker.build("arundhwaj/docker-nodejs-test:prod-v4", '.').push()
      }
    }
 }

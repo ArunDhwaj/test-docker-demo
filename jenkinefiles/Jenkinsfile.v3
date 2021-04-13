@@ -1,6 +1,6 @@
 pipeline {
 environment {
-registry = "arundhwaj/docker-nodejs-test"
+registry = "arundhwaj/docker-nodejs-test:prod-v4"
 registryCredential = 'dockerhub'
 dockerImage = ''
 }

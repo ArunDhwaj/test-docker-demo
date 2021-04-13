@@ -1,7 +1,5 @@
 pipeline {
 environment {
-def dockerHome = tool 'myDocker'
-env.PATH = "${dockerHome}/bin:${env.PATH}"
 registry = "arundhwaj/docker-nodejs-test:prod-v4"
 registryCredential = 'dockerhub'
 dockerImage = ''
@@ -23,8 +21,7 @@ dockerImage = docker.build registry + ":$BUILD_NUMBER"
 stage('Deploy our image') {
 steps{
 script {
-docker.withRegistry( '', dockerhub ) {
-dockerImage.push()
+
 }
 }
 }

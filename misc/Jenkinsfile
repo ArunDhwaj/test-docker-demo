@@ -1,8 +1,4 @@
 node {
-   environment {
-    registry = "arundhwaj/docker-nodejs-test"
-    registryCredential = ‘arundhwaj123’
-  }
    def commit_id
    stage('Preparation') {
      checkout scm
@@ -15,14 +11,9 @@ node {
        sh 'npm test'
      }
    }
-   stage('Building image') 
-   {
-      steps
-      {
-        script 
-        {
-          docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
-    }
+   stage('docker build/push') {
+     docker.withRegistry('https://hub.docker.com/', 'dockerhub') {
+       def app = docker.build("arundhwaj/docker-nodejs-test:prod-v4", '.').push()
+     }
+   }
 }

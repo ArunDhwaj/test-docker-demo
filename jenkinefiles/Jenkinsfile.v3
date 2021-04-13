@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    registry = "arundhwaj/docker-nodejs-test"
-    registryCredential = 'arundhwaj123'
+    registry = "arundhwaj/docker-nodejs-test:prod-v4"
+    registryCredential = 'dockerhub'
     dockerImage = ''
   }
   agent any

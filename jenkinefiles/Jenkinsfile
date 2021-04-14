@@ -16,6 +16,16 @@ node {
        sh 'npm test'
      }
    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn --version'
+                sh 'docker version'
+                echo "Build"
+                echo "PATH - $PATH"
+                
+            }
+        } 
    stage('docker build/push') {
        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')
       {

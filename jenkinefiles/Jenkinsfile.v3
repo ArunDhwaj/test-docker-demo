@@ -12,20 +12,7 @@ node {
      }
    }
    stage('Build Docker Image') {
-            steps {
-                script {
-                    dockerImage = docker.build("arundhwaj/docker-nodejs-test:${commit_id}")
-                }
-            }
+            sh 'build success'
         }
-        stage('Push Docker Image') {
-            steps {
-                script {
-                        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-                        dockerImage.push()
-                        dockerImage.push('latest')
-                    }
-                }
-            }
-        }   
+          
 }

@@ -1,7 +1,8 @@
 node {
     environment{
        dockerHome = tool 'docker'
-       PATH = "$dockerHome/bin:$PATH"
+       mavenHome = tool 'maven' 
+       PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
     }
    def commit_id
    stage('Preparation') {

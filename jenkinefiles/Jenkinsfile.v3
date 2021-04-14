@@ -11,8 +11,9 @@ node {
        sh 'npm test'
      }
    }
-   stage('Build Docker Image') {
-            sh 'build success'
-        }
-          
+   stage('docker build/push') {
+     docker.withRegistry('', 'dockerhub') {
+       def app = docker.build("arundhwaj/docker-nodejs-test:${commit_id}", '.').push()
+     }
+   }
 }

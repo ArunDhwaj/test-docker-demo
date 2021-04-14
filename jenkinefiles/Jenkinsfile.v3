@@ -1,4 +1,8 @@
 node {
+   environment{
+       dockerHome = tool 'docker'
+       PATH = "$dockerHome/bin:$PATH"
+    }
    stage('Preparation') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"                        

@@ -1,9 +1,4 @@
 node {
-    environment{
-       dockerHome = tool 'docker'
-       mavenHome = tool 'maven' 
-       PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
-    }
    def commit_id
    stage('Preparation') {
      checkout scm
@@ -16,15 +11,6 @@ node {
        sh 'npm test'
      }
    }
-    stages {
-        stage('Build') {
-            steps {
-                
-               echo "PATH - $PATH"
-                
-            }
-        } 
-    }     
    stage('docker build/push') {
        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub')
       {

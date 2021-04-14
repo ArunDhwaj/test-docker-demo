@@ -1,6 +1,6 @@
 node {
     environment{
-       dockerHome = tool 'myDocker'
+       dockerHome = tool 'docker'
        PATH = "$dockerHome/bin:$PATH"
     }
    def commit_id

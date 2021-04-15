@@ -1,8 +1,5 @@
 node {
-   environment{
-       dockerHome = tool 'docker'
-       PATH = "$dockerHome/bin:$PATH"
-    }
+   def commit_id
    stage('Preparation') {
      checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"                        
@@ -16,7 +13,8 @@ node {
    }
    stage('docker build/push') {
      docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-       def app = docker.build("arundhwaj/docker-nodejs-test:prod-v4", '.').push()
+       def app = docker.build("arundhwaj/docker-nodejs-test:${commit_id}", '.').push()
      }
    }
 }
+

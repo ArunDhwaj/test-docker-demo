@@ -3,7 +3,7 @@ node {
     myGradleContainer.pull()
 
     stage('prep') {
-        git url: ''
+        git url: 'https://github.com/ArunDhwaj/testdockerdemo.git'
     }
 
     stage('build') {
